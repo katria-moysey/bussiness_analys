@@ -9,22 +9,14 @@
 
 BOT_NAME = "tutorial"
 
-# ВИПРАВЛЕНО: реальна назва пакету проєкту - "tutorial" (див. scrapy.cfg),
-# а не "heritage".
 SPIDER_MODULES = ["tutorial.spiders"]
 NEWSPIDER_MODULE = "tutorial.spiders"
 
 ADDONS = {}
 
 
-# Wikipedia просить ідентифікувати бота описовим User-Agent
-# (https://meta.wikimedia.org/wiki/User-Agent_policy). Замініть e-mail на свій.
-USER_AGENT = "EducationalScrapingProject/1.0 (student assignment; contact: your_email@example.com)"
-
-# Поважаємо robots.txt Вікіпедії
 ROBOTSTXT_OBEY = True
 
-# Ввічлива пауза між запитами (не навантажуємо сервери Wikipedia)
 DOWNLOAD_DELAY = 1
 
 # Disable cookies (enabled by default)
@@ -54,17 +46,13 @@ DOWNLOAD_DELAY = 1
 #    "scrapy.extensions.telnet.TelnetConsole": None,
 #}
 
-# ВИПРАВЛЕНО: правильні шляхи "tutorial.pipelines...." + правильний порядок:
-# 1) ImagesPipeline (100) качає картинки і заповнює item["images"]
-# 2) ExportPipeline (200) вже бачить завантажені картинки -> пише .txt/.xml/.json/.csv
-# 3) SqlitePipeline (300) пише все у базу даних, включно зі шляхами картинок
+
 ITEM_PIPELINES = {
     "scrapy.pipelines.images.ImagesPipeline": 100,
     "tutorial.pipelines.ExportPipeline": 200,
     "tutorial.pipelines.SqlitePipeline": 300,
 }
 
-# Куди ImagesPipeline зберігає завантажені зображення (пункт 5 завдання)
 IMAGES_STORE = "output/images"
 IMAGES_EXPIRES = 0
 

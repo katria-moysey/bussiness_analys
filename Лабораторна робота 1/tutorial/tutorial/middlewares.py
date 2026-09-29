@@ -56,7 +56,6 @@ class HeritageSpiderMiddleware:
                 )
             yield i
 
-    # робимо копію методу декодування ScrapyItem до JSON
     encode = ScrapyJSONEncoder().encode
     def item_to_json(self, item):
         body = {

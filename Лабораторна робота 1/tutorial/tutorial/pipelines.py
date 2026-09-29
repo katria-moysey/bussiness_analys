@@ -17,14 +17,6 @@ OUTPUT_DIR.mkdir(exist_ok=True)
 
 
 class ExportPipeline:
-    """ПУНКТИ 3, 4, 5 (текстова частина завдання):
-    збирає підрозділи/об'єкти/зображення в пам'яті і в кінці роботи павука
-    зберігає їх у .txt, .xml, .json, .csv.
-
-    ВАЖЛИВО: у ITEM_PIPELINES цей пайплайн має мати БІЛЬШИЙ номер, ніж
-    scrapy.pipelines.images.ImagesPipeline, щоб на момент обробки тут
-    поле item['images'] вже було заповнене результатами завантаження.
-    """
 
     def open_spider(self, spider):
         self.divisions = []
@@ -60,8 +52,7 @@ class ExportPipeline:
         return item
 
     def close_spider(self, spider):
-        # --- підрозділи: .txt та .xml ---
-        with open(OUTPUT_DIR / "divisions.txt", "w", encoding="utf-8") as f:
+        with open( "divisions.txt", "w", encoding="utf-8") as f:
             for d in self.divisions:
                 f.write(f"{d['name']}\t{d['url']}\n")
 
@@ -71,21 +62,19 @@ class ExportPipeline:
             ET.SubElement(el, "name").text = d["name"]
             ET.SubElement(el, "url").text = d["url"]
         pretty_xml = minidom.parseString(ET.tostring(root, encoding="utf-8")).toprettyxml(indent="  ")
-        with open(OUTPUT_DIR / "divisions.xml", "w", encoding="utf-8") as f:
+        with open( "divisions.xml", "w", encoding="utf-8") as f:
             f.write(pretty_xml)
 
-        # --- об'єкти: .txt та .json ---
-        with open(OUTPUT_DIR / "items.txt", "w", encoding="utf-8") as f:
+        with open( "items.txt", "w", encoding="utf-8") as f:
             for it in self.items:
                 f.write(f"{it['division']} | {it['title']} | {it['location']} | {it['year']}\n")
-        with open(OUTPUT_DIR / "items.json", "w", encoding="utf-8") as f:
+        with open( "items.json", "w", encoding="utf-8") as f:
             json.dump(self.items, f, ensure_ascii=False, indent=2)
 
-        # --- зображення: .txt та .csv ---
-        with open(OUTPUT_DIR / "images.txt", "w", encoding="utf-8") as f:
+        with open( "images.txt", "w", encoding="utf-8") as f:
             for img in self.images:
                 f.write(f"{img['title']} | {img['image_url']} | {img['local_path']}\n")
-        with open(OUTPUT_DIR / "images.csv", "w", newline="", encoding="utf-8") as f:
+        with open( "images.csv", "w", newline="", encoding="utf-8") as f:
             writer = csv.DictWriter(f, fieldnames=["division", "title", "image_url", "local_path"])
             writer.writeheader()
             writer.writerows(self.images)
@@ -97,11 +86,8 @@ class ExportPipeline:
 
 
 class SqlitePipeline:
-    """ПУНКТ 6: зберігає всі зібрані дані у базу даних SQLite
-    (три пов'язані таблиці: divisions, items, images)."""
-
     def open_spider(self, spider):
-        self.connection = sqlite3.connect(OUTPUT_DIR / "database.sqlite3")
+        self.connection = sqlite3.connect( "database.sqlite3")
         self.cursor = self.connection.cursor()
         self.cursor.executescript("""
             DROP TABLE IF EXISTS images;
@@ -133,7 +119,7 @@ class SqlitePipeline:
         """)
         self.connection.commit()
         self.division_ids = {}
-        spider.logger.info("SQLite: базу даних ініціалізовано (%s)", OUTPUT_DIR / "database.sqlite3")
+        spider.logger.info("SQLite: базу даних ініціалізовано (%s)",  "database.sqlite3")
 
     def close_spider(self, spider):
         self.connection.commit()

@@ -79,7 +79,7 @@ class HeritagesSpider(scrapy.Spider):
         for tr in rows[1:]:
             if n >= self.MAX_ITEMS_PER_DIVISION:
                 break
-.
+
             cells = tr.css("th, td")
             if len(cells) < 2:
                 continue 
