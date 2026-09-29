@@ -1,0 +1,55 @@
+<?xml version="1.0" ?>
+<divisions>
+  <division>
+    <name>List of World Heritage Sites in Northern Europe</name>
+    <url>https://en.wikipedia.org/wiki/List_of_World_Heritage_Sites_in_Northern_Europe</url>
+  </division>
+  <division>
+    <name>List of World Heritage Sites in Western Europe</name>
+    <url>https://en.wikipedia.org/wiki/List_of_World_Heritage_Sites_in_Western_Europe</url>
+  </division>
+  <division>
+    <name>List of World Heritage Sites in Eastern Europe</name>
+    <url>https://en.wikipedia.org/wiki/List_of_World_Heritage_Sites_in_Eastern_Europe</url>
+  </division>
+  <division>
+    <name>List of World Heritage Sites in Southern Europe</name>
+    <url>https://en.wikipedia.org/wiki/List_of_World_Heritage_Sites_in_Southern_Europe</url>
+  </division>
+  <division>
+    <name>List of World Heritage Sites in Eastern Asia</name>
+    <url>https://en.wikipedia.org/wiki/List_of_World_Heritage_Sites_in_Eastern_Asia</url>
+  </division>
+  <division>
+    <name>List of World Heritage Sites in Southern Asia</name>
+    <url>https://en.wikipedia.org/wiki/List_of_World_Heritage_Sites_in_Southern_Asia</url>
+  </division>
+  <division>
+    <name>List of World Heritage Sites in Southeast Asia</name>
+    <url>https://en.wikipedia.org/wiki/List_of_World_Heritage_Sites_in_Southeast_Asia</url>
+  </division>
+  <division>
+    <name>List of World Heritage Sites in Central Asia</name>
+    <url>https://en.wikipedia.org/wiki/List_of_World_Heritage_Sites_in_Central_Asia</url>
+  </division>
+  <division>
+    <name>List of World Heritage Sites in Egypt</name>
+    <url>https://en.wikipedia.org/wiki/List_of_World_Heritage_Sites_in_Egypt</url>
+  </division>
+  <division>
+    <name>List of World Heritage Sites in South Africa</name>
+    <url>https://en.wikipedia.org/wiki/List_of_World_Heritage_Sites_in_South_Africa</url>
+  </division>
+  <division>
+    <name>List of World Heritage Sites in North America</name>
+    <url>https://en.wikipedia.org/wiki/List_of_World_Heritage_Sites_in_North_America</url>
+  </division>
+  <division>
+    <name>List of World Heritage Sites in Central America</name>
+    <url>https://en.wikipedia.org/wiki/List_of_World_Heritage_Sites_in_Central_America</url>
+  </division>
+  <division>
+    <name>List of World Heritage Sites in South America</name>
+    <url>https://en.wikipedia.org/wiki/List_of_World_Heritage_Sites_in_South_America</url>
+  </division>
+</divisions>
