@@ -185,22 +185,6 @@ def scrape_home(limit: int | None, headless: bool, timeout_ms: int = 25000):
         cards = cards[:limit]
     return cards, api_calls, api_data
 
-
-def save_to_csv(rows: list[dict], path: Path, fieldnames: list[str] | None = None) -> None:
-    if fieldnames is None:
-        fieldnames = []
-        for r in rows:
-            for k in r:
-                if k not in fieldnames:
-                    fieldnames.append(k)
-    with path.open("w", newline="", encoding="utf-8-sig") as f:
-        writer = csv.DictWriter(f, fieldnames=fieldnames, extrasaction="ignore")
-        writer.writeheader()
-        for r in rows:
-            writer.writerow({k: r.get(k, "") for k in fieldnames})
-    print(f"Збережено в файл .json")
-
-
 def save_all_in_one(cards, tournaments, api_data, static_count, raw_has_loading) -> None:
     by_section: dict[str, int] = {}
     for c in cards:
