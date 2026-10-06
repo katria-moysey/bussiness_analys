@@ -1,12 +1,10 @@
 from __future__ import annotations
 
 import argparse
-import csv
 import json
 import re
 import urllib.request
 from datetime import datetime
-from pathlib import Path
 
 from playwright.sync_api import sync_playwright, TimeoutError as PlaywrightTimeoutError
 
