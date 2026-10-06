@@ -10,10 +10,7 @@ from playwright.sync_api import sync_playwright, TimeoutError as PlaywrightTimeo
 
 
 TARGET_URL = "https://www.wtatennis.com/"
-OUTPUT_FILE = Path("wta_home.csv")
 ALL_DATA_FILE = Path("wta_all_data.json")
-FIELDNAMES = ["section", "type", "category", "title", "published", "duration", "url"]
-CONTENT_LINK_RE = re.compile(r"/(?:news|videos)/\d+/")
 
 UA = (
     "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 "
@@ -57,8 +54,6 @@ EXTRACT_JS = r"""
     const lines = text.split('\n').map(s => s.trim()).filter(Boolean);
     const published = (lines.find(l => timeRe.test(l)) || '').match(timeRe);
     const duration  = lines.find(l => durRe.test(l)) || '';
-
-    // категорія — це інше посилання в картці на /news/<слово> або /videos/<слово>
     let category = '';
     if (card) {
       for (const l of card.querySelectorAll('a[href]')) {
